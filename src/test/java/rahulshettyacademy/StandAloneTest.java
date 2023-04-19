@@ -69,9 +69,10 @@ public class StandAloneTest {
 		orderPage.inputInfo(cardYear,cardDate);
 		
 		//submit order
-//		orderPage.sumitOrder();
+		//add commit
+		orderPage.sumitOrder();
 		
-//		driver.quit();
+//		driver.close();
 	}
 
 }
