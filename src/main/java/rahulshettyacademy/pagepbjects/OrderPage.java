@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import AbstractComponents.AbstractComponent;
 
@@ -45,8 +46,17 @@ public class OrderPage extends AbstractComponent {
 	
 	@FindBy(xpath = "//section[@class='ta-results list-group ng-star-inserted']")
 	WebElement countrySugessOpt;
+	
+	@FindBy(css = "h1")
+	WebElement checkout_msg;
+	
+	@FindBy(css = "label[class=\"ng-star-inserted\"]")
+	WebElement oderID;
 
-//	WebElement cardYear = driver.findElement(By.xpath("//select[@class='input ddl'])[1]"));
+	@FindBy(css = "label[routerlink=\"/dashboard/myorders\"]")
+	WebElement oderHistory;
+
+	//	WebElement cardYear = driver.findElement(By.xpath("//select[@class='input ddl'])[1]"));
 //	WebElement cardDate = cardYear.findElement(RelativeLocator.with(By.tagName("select")).near(cardYear));
 //	public WebElement getCardDate() {
 //		return driver.findElement(RelativeLocator.with(By.tagName("select")).near(cardYear));
@@ -85,5 +95,17 @@ public class OrderPage extends AbstractComponent {
 			}
 		}
 		return;
+	}
+	
+	public void  checkoutSucess() {
+		Assert.assertEquals(checkout_msg.getText(), "THANKYOU FOR THE ORDER.");
+	}
+	
+	public String getOrderID() {
+		return oderID.getText();
+	}
+
+	public void openHistoryPage () {
+		goToPage(oderHistory);
 	}
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
 
 import AbstractComponents.AbstractComponent;
 
@@ -30,6 +31,8 @@ public class LandingPage extends AbstractComponent{
 	WebElement pw;
 	@FindBy(id = "login")
 	WebElement loginbtn;
+	@FindBy(id = "toast-container")
+	WebElement toast;
 
 	public void loginApp(String email, String userpw) {
 		mail.sendKeys(email);
@@ -37,5 +40,12 @@ public class LandingPage extends AbstractComponent{
 		loginbtn.click();
 	}
 	
+	public void goTo(String url){
+		driver.get(url);
+	}
 	
+	public String getToast() {
+		waitForElToAppear(toast);
+		return toast.getText();
+	}
 }

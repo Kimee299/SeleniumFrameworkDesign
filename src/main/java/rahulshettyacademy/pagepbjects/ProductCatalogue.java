@@ -61,8 +61,8 @@ public class ProductCatalogue extends AbstractComponent{
 	}
 	
 	public void openCart() {
-		waitForElToAppear(toast);
 		waitForElToLoaded(animating);
+		waitForElToAppear(toast);
 		goToPage(cart);
 	}
 
